@@ -1,13 +1,22 @@
 #!/usr/bin/env python3
-# This is a script that takes the name of a company and a job title, and adds that to a boiler plate cover letter .
+# This is a script that takes the name of a company and a job title, and adds that to a boiler plate cover letter.
 
 from reportlab.lib.pagesizes import A4
 from reportlab.lib.styles import getSampleStyleSheet
 from reportlab.platypus import SimpleDocTemplate, Paragraph, Spacer
 
+# Prompt the user for the organisation and the job title.
 job_title = input("What is the job title?\n")
 company_name = input("What is the job organisation name?\n")
 
+# Write the information to a file.
+org_and_job = job_title + ", " + company_name + "\n"
+
+f = open("/home/kubuntu-user/Documents/.cover_letter_logs/.application_log.txt", "a")
+f.write(org_and_job)
+f.close
+
+# Everything under this comment is the creation of the pdf.
 styles = getSampleStyleSheet()
 styles['Normal'].fontName = 'Times-Roman'  # Set the font name to Liberation Serif
 w, h = A4
